@@ -100,5 +100,25 @@ namespace SimpleInventory.Services
                 }
             }
         }
+
+        public void RemoveProduct(string productName)
+        {
+            var product = products.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+
+            if (product != null)
+            {
+                products.Remove(product);
+                Console.WriteLine($"Product '{productName}' has been removed from inventory.");
+            }
+            else
+            {
+                Console.WriteLine($"Product '{productName}' not found in inventory.");
+            }
+        }
+
+        public List<Product> SearchProducts(string productName)
+        {
+            return products.Where(p => p.Name.Contains(productName, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
     }
 }

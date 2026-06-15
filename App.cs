@@ -34,6 +34,33 @@ namespace SimpleInventory
                         _inventory.EditProduct(productName);
                         break;
 
+                    case 4:
+                        var deleteProductName = _inputHandler.getProductName();
+                        _inventory.RemoveProduct(deleteProductName);
+                        break;
+
+                    case 5:
+                        var searchQuery = _inputHandler.getProductName();
+                        var searchResults = _inventory.SearchProducts(searchQuery);
+                        if (searchResults.Count > 0)
+                        {
+                            Console.WriteLine("Search results:");
+                            foreach (var product in searchResults)
+                            {
+                                Console.WriteLine($"Product name: {product.Name}, Price: {product.Price}$, Quantity: {product.Quantity}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("No products found matching the search query.");
+                        }
+                        break;
+
+                    case 6:
+                        Console.WriteLine("Exiting the application. Goodbye!");
+                        running = false;
+                        break;
+
                     default:
                         Console.WriteLine("Invalid choice. Please enter a number from 1 to 6.");
                         break;
