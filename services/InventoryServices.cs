@@ -17,10 +17,6 @@ namespace SimpleInventory.Services
                     Console.WriteLine($"Product '{productName}' is in stock with quantity: {product.Quantity} try to choose different name");
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
             return false;
         }
@@ -36,6 +32,23 @@ namespace SimpleInventory.Services
 
                 products.Add(new Product(productName, productPrice, productQuantity));
             }
+        }
+
+        public List<Product> DisplayProducts()
+        {
+            if (products.Count == 0)
+            {
+                Console.WriteLine("No products in inventory.");
+                return new List<Product>();
+            }
+            else
+            {
+                foreach (var product in products)
+                {
+                    Console.WriteLine($"Product name: {product.Name}, Price: {product.Price}$, Quantity: {product.Quantity}");
+                }
+            }
+            return products;
         }
     }
 }

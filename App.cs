@@ -25,6 +25,10 @@ namespace SimpleInventory
                         _inventory.AddProduct();
                         break;
 
+                    case 2:
+                        var products = _inventory.DisplayProducts();
+                        break;
+
                     default:
                         Console.WriteLine("Invalid choice. Please enter a number from 1 to 6.");
                         break;
