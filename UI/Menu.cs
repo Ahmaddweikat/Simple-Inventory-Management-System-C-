@@ -8,7 +8,9 @@ namespace SimpleInventory.UI
             Console.WriteLine("1. Add Product");
             Console.WriteLine("2. Display Products");
             Console.WriteLine("3. Edit Product");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Delete Product");
+            Console.WriteLine("5. Search Product");
+            Console.WriteLine("6. Exit");
         }
 
         public static void DisplayEditMenu()
