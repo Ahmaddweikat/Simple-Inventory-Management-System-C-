@@ -1,3 +1,5 @@
+using SimpleInventory.Models;
+
 namespace SimpleInventory.UI
 {
     public class InputHandler
