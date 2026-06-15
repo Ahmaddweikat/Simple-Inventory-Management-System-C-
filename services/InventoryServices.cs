@@ -50,5 +50,55 @@ namespace SimpleInventory.Services
             }
             return products;
         }
+
+        public void EditProduct(string productName)
+        {
+            if (!IsProductInStock(productName))
+            {
+                Console.WriteLine($"Product '{productName}' not found in inventory.");
+                return;
+            }
+            else
+            {
+                var product = products.FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+
+                if (product != null)
+                {
+                    bool editing = true;
+
+                    while (editing)
+                    {
+                        Menu.DisplayEditMenu();
+                        var choice = _inputHandler.getUserInput();
+
+                        switch (choice)
+                        {
+                            case 1:
+                                var newName = _inputHandler.getProductName();
+                                product.Name = newName;
+                                break;
+
+                            case 2:
+                                var newPrice = _inputHandler.getProductPrice();
+                                product.Price = newPrice;
+                                break;
+
+                            case 3:
+                                var newQuantity = _inputHandler.getProductQuantity();
+                                product.Quantity = newQuantity;
+                                break;
+
+                            case 4:
+                                editing = false;
+                                break;
+
+                            default:
+                                Console.WriteLine("Invalid choice. Please enter a number from 1 to 4.");
+                                break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
